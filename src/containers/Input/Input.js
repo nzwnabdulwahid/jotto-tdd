@@ -4,19 +4,37 @@ import { connect } from 'react-redux';
 
 class Input extends Component {
 
-	render() {
+	renderForm = () => {
 		return (
-			<div></div>
+			<form className="form-inline">
+				<input 
+					data-test="input-box"
+					className="mb-2 mx-sm-3"
+					placeholder="Enter Guess"
+					type="text"/>
+				<button
+					data-test="submit-button"
+					className="btn btn-primary mb-2"
+					type="submit">
+					Submit
+				</button>
+			</form>
+		)
+	}
+
+	render() {
+		const { success } = this.props;
+		const content = success ? null : this.renderForm();
+		return (
+			<div data-test="component-input">
+				{content }
+			</div>
 		)
 	}	
 }
 
-Input.propTypes = {
-
-}
-
-const mapStateToProps = state => {
-	return {};
+const mapStateToProps = ({ success }) => {
+  return { success };
 }
 
 export default connect(mapStateToProps)(Input);
