@@ -22,7 +22,6 @@ class App extends Component{
         <h1>Jotto</h1>
         <Congrats success={success}/>
         <Input/>
-        
         <GuessedWords guessedWords={guessedWords}/>
       </div>
     )
