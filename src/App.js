@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
 import './App.css';
 
 import Congrats from './containers/Congrats/Congrats'
 import Input from './containers/Input/Input'
 import GuessedWords from './containers/GuessedWords/GuessedWords'
+import { getSecretWord } from './actions';
+
 class App extends Component{
   
   constructor(props){
@@ -13,19 +16,22 @@ class App extends Component{
   }
 
   render() {
-    
+    const {success, guessedWords, secretWord} = this.props;
     return (
       <div data-test="component-app" className="container App">
         <h1>Jotto</h1>
+        <Congrats success={success}/>
         <Input/>
-        <Congrats success={false}/>
-        <GuessedWords guessedWords={[{
-          guessedWord:'train', letterMatchCount:3
-        }]}/>
+        
+        <GuessedWords guessedWords={guessedWords}/>
       </div>
     )
 
   }
 }
 
-export default App;
+const mapStateToProps = ({success, guessedWords, secretWord}) => {
+  return {success, guessedWords, secretWord}
+}
+
+export default connect(mapStateToProps, {getSecretWord})(App);
