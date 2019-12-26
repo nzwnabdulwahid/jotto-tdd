@@ -33,6 +33,7 @@ class GuessedWords extends Component {
 							{guessedWordsRow}
 						</tbody>
 					</table>
+					<h3>Total guesses: <span data-test="guessed-count">{guessedWords.length}</span></h3>
 				</div>
 			)
 		}

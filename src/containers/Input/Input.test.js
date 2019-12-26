@@ -95,6 +95,10 @@ describe('guessedWord action creator call', () => {
 		const guessWordArg = guessWordMock.mock.calls[0][0];
 		expect(guessWordArg).toBe(guessedWord);
 	})
+
+	test('currentGuess to be empty string on submit', () => {
+		expect(wrapper.state('currentGuess')).toBe('')
+	})
 })
 
 

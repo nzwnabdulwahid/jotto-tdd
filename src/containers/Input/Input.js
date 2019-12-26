@@ -13,12 +13,13 @@ export class UnconnectedInput extends Component {
 	}
 
 	handleSubmitGuessWord = (evt) => {
+		evt.preventDefault();
 		const { guessWord } = this.props;
 		const { currentGuess } = this.state;
 
 		if(currentGuess && currentGuess.length > 0){
-			evt.preventDefault();
 			guessWord(currentGuess);
+			this.setState({ currentGuess: '' })
 		}
 	}
 
